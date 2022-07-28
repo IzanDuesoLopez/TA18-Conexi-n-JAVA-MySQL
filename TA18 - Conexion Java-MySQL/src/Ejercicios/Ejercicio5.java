@@ -34,7 +34,5 @@ public class Ejercicio5 {
 		base_de_datos.insertData(nameDataBase, insertAlmacenesTres);
 		base_de_datos.insertData(nameDataBase, insertAlmacenesCuatro);
 		base_de_datos.insertData(nameDataBase, insertAlmacenesCinco);
-		
-		
 	}
 }
