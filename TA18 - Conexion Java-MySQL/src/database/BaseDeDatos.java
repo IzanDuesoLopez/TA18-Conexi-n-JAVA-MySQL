@@ -69,22 +69,22 @@ public class BaseDeDatos {
 		}
 	}
 	
-	// Método para crear tabla
+	// Method to create a table
 	public static void createTable(String database, String name, String query) {
-		// Hacemos un try para conectarnos, usar la database, y crear la tabla
+		// We use a try to proceed with connection, use the database, and create the table
 		try {
 			
-			// Usamos la tabla
+			// We use the table
 			String querydatabase = "use" + database + ";";
 			java.sql.Statement stdatabase = connect.createStatement();
 			stdatabase.executeUpdate(querydatabase);
 			
-			// Creamos la tabla
+			// Creating the table
 			java.sql.Statement st = connect.createStatement();
 			st.executeUpdate(query);
 			System.out.println("Tabla creada con éxito");
 			
-			// Hacemos un catch en caso de que haya error en crear la tabla
+			// We do a catch in case an error exists
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
 			System.out.println("Error creando tabla");
