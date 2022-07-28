@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 import com.mysql.cj.protocol.a.MysqlBinaryValueDecoder;
+import com.mysql.cj.xdevapi.Statement;
 
 public class BaseDeDatos {
 	
@@ -16,6 +17,15 @@ public class BaseDeDatos {
 	// Default builder
 	public BaseDeDatos() {
 		
+	}
+	
+	// Method that recives a string and creates a database
+	public void createDataBase(String dbName) {
+		try {
+			String query = "create database " + dbName; // Query to create the database
+		} catch (Exception e) {
+			
+		}
 	}
 	
 	// Method for connecting to the database
@@ -39,5 +49,7 @@ public class BaseDeDatos {
 			Logger.getLogger(BaseDeDatos.class.getName()).log(Level.SEVERE, null, e);
 		}
 	}
+	
+	
 	
 }
