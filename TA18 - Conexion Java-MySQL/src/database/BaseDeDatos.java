@@ -6,12 +6,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
+import com.mysql.cj.MysqlConnection;
 import com.mysql.cj.protocol.a.MysqlBinaryValueDecoder;
 import com.mysql.cj.xdevapi.Statement;
 
 public class BaseDeDatos {
 	
-	private Connection connect;
+	private static Connection connect;
+	private String localServer= "jdbc:mysql://192.168.1.138:9090?useTimezone=true&serverTimeZona=UTC";
+	private String localUser= "root";
+	private String localPass= "Cibtraseña123";
 	
 	// Default builder
 	public BaseDeDatos() {
@@ -22,16 +26,21 @@ public class BaseDeDatos {
 	public void createDataBase(String dbName) {
 		try {
 			String query = "create database " + dbName; // Query to create the database
-		} catch (Exception e) {
-			
+			java.sql.Statement jst = connect.createStatement(); // We create the statement
+			jst.executeUpdate(query); // We execute the query
+			closeConnection(); // Close connection
+			connectDataBase(localServer, localUser, localPass); // Connecting to database
+			System.out.println("The database has been created: " + dbName); // Print that the database has been created
+		} catch (SQLException e) {
+			Logger.getLogger(BaseDeDatos.class.getName()).log(Level.SEVERE, null, e);
 		}
 	}
 	
 	// Method for connecting to the database
-	public void connectDataBase() {
+	public void connectDataBase(String localServer, String localUser, String localPass) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver"); // We use the driver
-			connect = DriverManager.getConnection("jdbc:mysql://192.168.1.138:9090?useTimezone=true&serverTimeZona=UTC", "root", "Contraseña123"); // We connect to our fedora server
+			connect = DriverManager.getConnection(localServer, localUser, localPass); // We connect to our fedora server
 			System.out.println("You've been connected to the server"); // We print that we've been connected
 		} catch (SQLException | ClassNotFoundException ex) { // If some code returns error
 			System.out.println("Can't connect to database");
@@ -50,25 +59,23 @@ public class BaseDeDatos {
 	}
 	
 	// Método para crear tabla
-	public static void createTable(String database, String name, String Query) {
+	public static void createTable(String database, String name, String query) {
 		// Hacemos un try para conectarnos, usar la database, y crear la tabla
 		try {
 			
 			// Usamos la tabla
-			String Querydatabase = "use" + database + ";";
-			Statement stdatabase = connect.createStatement();
-			stdatabase.executeUpdate(Querydatabase);
+			String querydatabase = "use" + database + ";";
+			java.sql.Statement stdatabase = connect.createStatement();
+			stdatabase.executeUpdate(querydatabase);
 			
 			// Creamos la tabla
-			
-			Statement st = connect.createStatement();
-			st.executeUpdate(Query);
+			java.sql.Statement st = connect.createStatement();
+			st.executeUpdate(query);
 			System.out.println("Tabla creada con éxito");
 			
 			// Hacemos un catch en caso de que haya error en crear la tabla
-			
 		} catch (SQLException ex) {
-			System.out.println(ex.getMessage(ex));
+			System.out.println(ex.getMessage());
 			System.out.println("Error creando tabla");
 		}
 	}
