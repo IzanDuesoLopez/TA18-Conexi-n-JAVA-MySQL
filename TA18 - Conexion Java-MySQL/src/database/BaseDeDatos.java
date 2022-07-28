@@ -47,47 +47,73 @@ public class BaseDeDatos {
 	}
 	
 	// Method for connecting to the database
-	public void connectMySql() {
+	public static void connectMySql() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver"); // We use the driver
 			connect = DriverManager.getConnection("jdbc:mysql://192.168.1.138:3306?useTimezone=true&serverTimezone=UTC", "local", "Local123@"); // We connect to our fedora server
-			System.out.println("You've been connected to the server"); // We print that we've been connected
+			System.out.println("> You've been connected to the server <"); // We print that we've been connected
 		} catch (SQLException | ClassNotFoundException ex) { // If some code returns error
-			System.out.println("Can't connect to database");
+			System.out.println("> Can't connect to database <");
 			System.out.println(ex);
 		}
 	}
 	
 	// Method for closing the connection
-	public void closeConnection() {
+	public static void closeConnection() {
 		try {
 			connect.close(); // We close the connection
-			System.out.println("Connection ended");
+			System.out.println("> Connection ended <");
 		} catch (SQLException e) {
 			Logger.getLogger(BaseDeDatos.class.getName()).log(Level.SEVERE, null, e);
 		}
 	}
 	
 	// Method to create a table
-	public static void createTable(String database, String name, String query) {
+	public static void createTable(String database, String queryCreateTable) {
 		// We use a try to proceed with connection, use the database, and create the table
 		try {
-			
+			connectMySql(); // We connect to MySQL
 			// We use the table
-			String querydatabase = "use" + database + ";";
+			String querydatabase = "use " + database + ";";
 			java.sql.Statement stdatabase = connect.createStatement();
 			stdatabase.executeUpdate(querydatabase);
 			
 			// Creating the table
 			java.sql.Statement st = connect.createStatement();
-			st.executeUpdate(query);
-			System.out.println("Tabla creada con éxito");
+			st.executeUpdate(queryCreateTable);
+			System.out.println("The table has been created correctly");
 			
+			closeConnection();
 			// We do a catch in case an error exists
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
 			System.out.println("Error creando tabla");
 		}
 	}
+	
+	// Method to insert data on table
+	public static void insertData(String database, String queryCreateTable) {
+		// We use a try to proceed with connection, use the database, and insert the data
+		try {
+			connectMySql(); // We connect to MySQL
+			// We use the table
+			String querydatabase = "use " + database + ";";
+			java.sql.Statement stdatabase = connect.createStatement();
+			stdatabase.executeUpdate(querydatabase);
+
+			// Insert the data
+			java.sql.Statement st = connect.createStatement();
+			st.executeUpdate(queryCreateTable);
+			System.out.println("The data has been inserted");
+
+			closeConnection();
+			// We do a catch in case an error exists
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			System.out.println("Error creando tabla");
+		}
+	}
+	
+	
 	
 }
