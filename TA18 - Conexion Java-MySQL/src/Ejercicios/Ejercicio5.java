@@ -21,6 +21,8 @@ public class Ejercicio5 {
 		String insertAlmacenesTres = "insert into Almacenes(lugar, capacidad) values ('Tarragona', 21)";
 		String insertAlmacenesCuatro = "insert into Almacenes(lugar, capacidad) values ('Valls', 55)";
 		String insertAlmacenesCinco = "insert into Almacenes(lugar, capacidad) values ('Cambrils', 60)";
+		
+		String insertCajasUno = "";
 
 		BaseDeDatos base_de_datos = new BaseDeDatos(); // New object with the methos defined
 		base_de_datos.connectMySql(); // Connect to MySql
