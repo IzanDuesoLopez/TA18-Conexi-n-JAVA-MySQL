@@ -26,9 +26,8 @@ public class BaseDeDatos {
 			String query = "create database " + dbName; // Query to create the database
 			java.sql.Statement jst = connect.createStatement(); // We create the statement
 			jst.executeUpdate(query); // We execute the query
-			closeConnection(); // Close connection
-			
 			System.out.println("The database has been created: " + dbName); // Print that the database has been created
+			closeConnection(); // Close connection
 		} catch (SQLException e) {
 			Logger.getLogger(BaseDeDatos.class.getName()).log(Level.SEVERE, null, e);
 		}
@@ -40,8 +39,8 @@ public class BaseDeDatos {
 			String query = "drop database " + dbName; // Query to create the database
 			java.sql.Statement jst = connect.createStatement(); // We create the statement
 			jst.executeUpdate(query); // We execute the query
-			closeConnection(); // Close connection
 			System.out.println("The database has been deleted: " + dbName); // Print that the database has been created
+			closeConnection(); // Close connection
 		} catch (SQLException e) {
 			Logger.getLogger(BaseDeDatos.class.getName()).log(Level.SEVERE, null, e);
 		}

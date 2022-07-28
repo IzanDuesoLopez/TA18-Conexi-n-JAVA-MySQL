@@ -14,6 +14,7 @@ public class Ejercicio1 {
 		String nameDataBase = "los_almacenes";
 		
 		BaseDeDatos base_de_datos = new BaseDeDatos();
+		base_de_datos.connectMySql();
 		base_de_datos.deleteDataBase(nameDataBase);
 		base_de_datos.createDataBase(nameDataBase);
 		
