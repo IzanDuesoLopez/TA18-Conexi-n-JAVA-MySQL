@@ -1,5 +1,7 @@
 package Ejercicios;
 
-public class Ejercicio5 {
+import database.BaseDeDatos;
 
+public class Ejercicio5 {
+	
 }
