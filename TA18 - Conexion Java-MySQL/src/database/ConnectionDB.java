@@ -77,6 +77,7 @@ public class ConnectionDB {
 		}
 	}
 	
+	// Method that gets a insert query
 	public void insertRow(String database_name, String query_insert) {
 		
 		try {

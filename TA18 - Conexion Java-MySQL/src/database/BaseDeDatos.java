@@ -114,6 +114,37 @@ public class BaseDeDatos {
 		}
 	}
 	
+	// Method that get mysql values
+	public void getValues(String database_name, String table, int attributes) {
+		try {
+			connectMySql();
+			String query_use = "use " + database_name + ";";
+			java.sql.Statement st_use_database = connect.createStatement();
+			st_use_database.executeUpdate(query_use);
+			
+			String result = "select * from " + table;
+			java.sql.Statement st_select = connect.createStatement();
+			java.sql.ResultSet registers = st_select.executeQuery(result);
+			
+			System.out.println("\n"+table);
+			// We print table registers, controlling the number of attributes that every register has
+			while(registers.next()) {
+				if(attributes == 2) {
+					System.out.println(registers.getString(1) + " " + registers.getString(2));
+				}else if(attributes == 3) {
+					System.out.println(registers.getString(1) + " " + registers.getString(2) + " " + registers.getString(3));
+				} else if(attributes == 4) {
+					System.out.println(registers.getString(1) + " " + registers.getString(2) + " " + registers.getString(3) + " " + registers.getString(4));
+				}
+			}
+			System.out.println("\n");
+			
+			closeConnection();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			System.out.println("The data retrieve failed");
+		}
+	}
 	
 	
 }
