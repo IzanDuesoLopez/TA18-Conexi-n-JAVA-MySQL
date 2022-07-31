@@ -59,6 +59,9 @@ public class Ejercicio2 {
 		connection.insertRow(database_name, insert_cajas_4);
 		connection.insertRow(database_name, insert_cajas_5);
 		
+		connection.getValues(database_name, "almacenes");
+		connection.getValues(database_name, "cajas");
+		
 		// Close the database connection
 		connection.closeDatabaseConnection();
 		

@@ -78,6 +78,10 @@ public class Ejercicio6 {
 		connection.insertRow(database_name, insert_suministra_4);
 		connection.insertRow(database_name, insert_suministra_5);
 		
+		connection.getValues(database_name, "piezas");
+		connection.getValues(database_name, "proveedores");
+		connection.getValues(database_name, "suministra");
+		
 		// Close the database connection
 		connection.closeDatabaseConnection();
 		

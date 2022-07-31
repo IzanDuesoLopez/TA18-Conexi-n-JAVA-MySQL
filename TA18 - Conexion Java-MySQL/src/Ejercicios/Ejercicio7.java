@@ -6,7 +6,7 @@ public class Ejercicio7 {
 	public static void main(String[] args) {
 		executeQueries();
 	}
-	public static void executeQueries() {
+	public static void executeQueries() {		
 		ConnectionDB connection = new ConnectionDB();
 		
 		String database_name = "cientificos";
@@ -81,6 +81,10 @@ public class Ejercicio7 {
 		connection.insertRow(database_name, insert_asignado_a_3);
 		connection.insertRow(database_name, insert_asignado_a_4);
 		connection.insertRow(database_name, insert_asignado_a_5);
+		
+		connection.getValues(database_name, "cientificos");
+		connection.getValues(database_name, "proyectos");
+		connection.getValues(database_name, "asignado_a");
 		
 		// Close the database connection
 		connection.closeDatabaseConnection();
