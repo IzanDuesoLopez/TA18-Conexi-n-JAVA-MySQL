@@ -30,7 +30,8 @@ public class Ejercicio9 {
 		String reserva = "create table Reserva ("
 				+ "DNI varchar(8) primary key,"
 				+ "NumSerie char(4),"
-				+ "nombre nvarchar(100) not null,"
+				+ "Comienzo datetime not null,"
+				+ "Fin datetime not null,"
 				+ "primary key(DNI, NumSerie),"
 				+ "foreign key(DNI) references Investigadores(DNI)"
 				+ "on delete cascade on update cascade,"
@@ -50,32 +51,32 @@ public class Ejercicio9 {
 		int numAttributes = 3;
 		
 		// We define insert query variables for Reserva table
-		String insertFacultadUno = "insert into Facultad values ('Hitman')";
-		String insertFacultadDos = "insert into Facultad values ('Dragon ball')";
-		String insertFacultadTres = "insert into Facultad values ('Spongebob')";
-		String insertFacultadCuatro = "insert into Facultad values ('Thor')";
-		String insertFacultadCinco = "insert into Facultad values ('Spiderman')";
+		String insertFacultadUno = "insert into Facultad values (1,'Quimica')";
+		String insertFacultadDos = "insert into Facultad values (2,'Enologia')";
+		String insertFacultadTres = "insert into Facultad values (3,'Matemáticas')";
+		String insertFacultadCuatro = "insert into Facultad values (4,'Thor')";
+		String insertFacultadCinco = "insert into Facultad values (5,'Spiderman')";
 		
 		// We define insert query variables for Investigadores table
-		String insertInvestigadoresUno = "insert into Investigadores values ('Hitman', 1)";
-		String insertInvestigadoresDos = "insert into Investigadores values ('Dragon ball', 2)";
-		String insertInvestigadoresTres = "insert into Investigadores values ('Spongebob', 3)";
-		String insertInvestigadoresCuatro = "insert into Investigadores values ('Thor', 4)";
-		String insertInvestigadoresCinco = "insert into Investigadores values ('Spiderman', 5)";
+		String insertInvestigadoresUno = "insert into Investigadores values ('23375678', 'Izan Dueso López', 1)";
+		String insertInvestigadoresDos = "insert into Investigadores values ('01234568', 'Nicolás Copérnico', 2)";
+		String insertInvestigadoresTres = "insert into Investigadores values ('01234569', 'Pablo González', 3)";
+		String insertInvestigadoresCuatro = "insert into Investigadores values ('01234570', 'Javier Gutiérrez', 4)";
+		String insertInvestigadoresCinco = "insert into Investigadores values ('01234571', 'Pablo Gutiérrez', 5)";
 
 		// We define insert query variables for Reserva table
-		String insertReservaUno = "insert into Reserva values ('Hitman', 18)";
-		String insertReservaDos = "insert into Reserva values ('Dragon ball', 16)";
-		String insertReservaTres = "insert into Reserva values ('Spongebob', 7)";
-		String insertReservaCuatro = "insert into Reserva values ('Thor', 12)";
-		String insertReservaCinco = "insert into Reserva values ('Spiderman', 12)";
+		String insertReservaUno = "insert into Reserva values ('23375678', '0001', 23/05/2023, 23/06/2023)";
+		String insertReservaDos = "insert into Reserva values ('01234568', '0002', 23/05/2023, 23/06/2023)";
+		String insertReservaTres = "insert into Reserva values ('01234569', '0003', 23/05/2023, 23/06/2023)";
+		String insertReservaCuatro = "insert into Reserva values ('01234570', '0004', 23/05/2023, 23/06/2023)";
+		String insertReservaCinco = "insert into Reserva values ('01234571', '0005', 23/05/2023, 23/06/2023)";
 				
 		// We define insert query variables for Equipos table
-		String insertEquiposUno = "insert into Equipos values ('Hitman', 18)";
-		String insertEquiposDos = "insert into Equipos values ('Dragon ball', 16)";
-		String insertEquiposTres = "insert into Equipos values ('Spongebob', 7)";
-		String insertEquiposCuatro = "insert into Equipos values ('Thor', 12)";
-		String insertEquiposCinco = "insert into Equipos values ('Spiderman', 12)";
+		String insertEquiposUno = "insert into Equipos values ('0001', 'Equipo A', 1)";
+		String insertEquiposDos = "insert into Equipos values ('0002', 'Equipo B', 2)";
+		String insertEquiposTres = "insert into Equipos values ('0003', 'Equipo C', 3)";
+		String insertEquiposCuatro = "insert into Equipos values ('0004', 'Equipo D', 4)";
+		String insertEquiposCinco = "insert into Equipos values ('0005', 'Equipo E', 5)";
 				
 		
 		BaseDeDatos base_de_datos = new BaseDeDatos(); // New object with the method defined
