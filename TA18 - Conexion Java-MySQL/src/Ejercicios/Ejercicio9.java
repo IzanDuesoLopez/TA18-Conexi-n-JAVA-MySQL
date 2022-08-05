@@ -19,18 +19,18 @@ public class Ejercicio9 {
 		int numAttributes = 3;
 		
 		// We define insert query variables for Peliculas table
-		String insertPeliculasUno = "insert into Peliculas(nombre, calificacion_edad) values ('Hitman', 18)";
-		String insertPeliculasDos = "insert into Peliculas(nombre, calificacion_edad) values ('Dragon ball', 16)";
-		String insertPeliculasTres = "insert into Peliculas(nombre, calificacion_edad) values ('Spongebob', 7)";
-		String insertPeliculasCuatro = "insert into Peliculas(nombre, calificacion_edad) values ('Thor', 12)";
-		String insertPeliculasCinco = "insert into Peliculas(nombre, calificacion_edad) values ('Spiderman', 12)";
+		String insertPeliculasUno = "insert into Peliculas values ('Hitman', 18)";
+		String insertPeliculasDos = "insert into Peliculas values ('Dragon ball', 16)";
+		String insertPeliculasTres = "insert into Peliculas values ('Spongebob', 7)";
+		String insertPeliculasCuatro = "insert into Peliculas values ('Thor', 12)";
+		String insertPeliculasCinco = "insert into Peliculas values ('Spiderman', 12)";
 		
 		// We define insert query variables for Salas table
-		String insertSalasUno = "insert into Salas(pelicula, nombre) values (1, 'Hitman')";
-		String insertSalasDos = "insert into Salas(pelicula, nombre) values (2, 'Dragon ball')";
-		String insertSalasTres = "insert into Salas(pelicula, nombre) values (3, 'Spongebob')";
-		String insertSalasCuatro = "insert into Salas(pelicula, nombre) values (4, 'Thor')";
-		String insertSalasCinco = "insert into Salas(pelicula, nombre) values (5, 'Spiderman')";
+		String insertSalasUno = "insert into Salas values (1, 'Hitman')";
+		String insertSalasDos = "insert into Salas values (2, 'Dragon ball')";
+		String insertSalasTres = "insert into Salas values (3, 'Spongebob')";
+		String insertSalasCuatro = "insert into Salas values (4, 'Thor')";
+		String insertSalasCinco = "insert into Salas values (5, 'Spiderman')";
 
 		BaseDeDatos base_de_datos = new BaseDeDatos(); // New object with the method defined
 		base_de_datos.connectMySql(); // Connect to MySql

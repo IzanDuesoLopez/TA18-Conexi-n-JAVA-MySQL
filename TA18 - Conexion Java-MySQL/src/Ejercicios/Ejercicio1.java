@@ -19,18 +19,18 @@ public class Ejercicio1 {
 		int numAttributes = 3;
 		
 		// We define insert query variables for Fabricantes table
-		String insertFabricantesUno = "insert into Fabricantes(nombre) values ('Mercedes')";
-		String insertFabricantesDos = "insert into Fabricantes(nombre) values ('Red Bull')";
-		String insertFabricantesTres = "insert into Fabricantes(nombre) values ('Mc Claren')";
-		String insertFabricantesCuatro = "insert into Fabricantes(nombre) values ('Alpine')";
-		String insertFabricantesCinco = "insert into Fabricantes(nombre) values ('Williams')";
+		String insertFabricantesUno = "insert into Fabricantes values ('Mercedes')";
+		String insertFabricantesDos = "insert into Fabricantes values ('Red Bull')";
+		String insertFabricantesTres = "insert into Fabricantes values ('Mc Claren')";
+		String insertFabricantesCuatro = "insert into Fabricantes values ('Alpine')";
+		String insertFabricantesCinco = "insert into Fabricantes values ('Williams')";
 		
 		// We define insert query variables for Articulos table
-		String insertArticulosUno = "insert into Articulos(fabricante, precio) values (1, 350)";
-		String insertArticulosDos = "insert into Articulos(fabricante, precio) values (2, 200)";
-		String insertArticulosTres = "insert into Articulos(fabricante, precio) values (3, 150)";
-		String insertArticulosCuatro = "insert into Articulos(fabricante, precio) values (4, 450)";
-		String insertArticulosCinco = "insert into Articulos(fabricante, precio) values (5, 600)";
+		String insertArticulosUno = "insert into Articulos values (Motor, 350, 1)";
+		String insertArticulosDos = "insert into Articulos values (Alerón, 400, 2)";
+		String insertArticulosTres = "insert into Articulos values (Suspensión, 260, 3)";
+		String insertArticulosCuatro = "insert into Articulos values (Retrovisores, 325, 4)";
+		String insertArticulosCinco = "insert into Articulos values (Neumáticos, 575, 5)";
 
 		BaseDeDatos base_de_datos = new BaseDeDatos(); // New object with the method defined
 		base_de_datos.connectMySql(); // Connect to MySql
