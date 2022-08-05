@@ -11,7 +11,7 @@ public class Ejercicio5 {
 		String nameDataBase = "directores";
 
 		// Query to create Directores table
-		String directores = "create table Directores(DNI varchar(8) primary key,NomApels nvarchar(100) not null,DNIJefe varchar (8) foreing key, Despacho int not null foreign key);";
+		String directores = "create table Directores(DNI varchar(8) primary key,NomApels nvarchar(100) not null,foreing key(DNIJefe) references Directores(DNI), foreing key(Despacho) references Despachos(Numero));";
 		// Query to create Despachos table
 		String despachos = "create table Despachos(numero int primary key,capacidad int not null,);";
 		
@@ -25,11 +25,11 @@ public class Ejercicio5 {
 		String insertDirectoresCinco = "insert into Directores values ('7882561', 'Oscar Plana', '447C')";
 		
 		// We define insert query variables for Despachos table
-		String insertDespachosUno = "insert into Despachosvalues (25000)";
-		String insertDespachosDos = "insert into Despachos values (37880)";
-		String insertDespachosTres = "insert into Despachos values (55220)";
-		String insertDespachosCuatro = "insert into Despachos values (77852)";
-		String insertDespachosCinco = "insert into Despachos values (33688)";
+		String insertDespachosUno = "insert into Despachosvalues (1, 25000)";
+		String insertDespachosDos = "insert into Despachos values (2, 37880)";
+		String insertDespachosTres = "insert into Despachos values (3, 55220)";
+		String insertDespachosCuatro = "insert into Despachos values (4, 77852)";
+		String insertDespachosCinco = "insert into Despachos values (5, 33688)";
 
 		BaseDeDatos base_de_datos = new BaseDeDatos(); // New object with the method defined
 		base_de_datos.connectMySql(); // Connect to MySql

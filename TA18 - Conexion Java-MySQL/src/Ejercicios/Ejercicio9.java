@@ -10,52 +10,116 @@ public class Ejercicio9 {
 	public static void funcionalidad() {
 		String nameDataBase = "peliculas_y_salas";
 
-		// Query to create Peliculas table
-		String peliculas = "create table Peliculas(codigo int auto_increment primary key,nombre nvarchar(100) not null,calificacion_edad int not null);";
-		// Query to create Salas table
-		String salas = "create table Salas(codigo int auto_increment primary key,pelicula int not null,nombre nvarchar(100) not null,"+
-						"foreign key(pelicula) references Peliculas(codigo));";
+		// Query to create Facultad table
+		String facultad = "create table Facultad ("
+				+ "codigo int,"
+				+ "nombre nvarchar(100) not null,"
+				+ "primary key (codigo)"
+				+ ");";
+		
+		// Query to create Investigadores table
+		String investigadores = "create table Investigadores ("
+				+ "DNI varchar(8),"
+				+ "NomApels nvarchar(255)"
+				+ "primary key (DNI),"
+				+ "foreign key(facultad) references Facultad(codigo)"
+				+ "on delete cascade on update cascade,"
+				+ ")";
+		
+		// Query to create Reserva table
+		String reserva = "create table Reserva ("
+				+ "DNI varchar(8) primary key,"
+				+ "NumSerie char(4),"
+				+ "nombre nvarchar(100) not null,"
+				+ "primary key(DNI, NumSerie),"
+				+ "foreign key(DNI) references Investigadores(DNI)"
+				+ "on delete cascade on update cascade,"
+				+ "foreign key(NumSerie) references Equipos(NumSerie)"
+				+ "on delete cascade on update cascade,"				
+				+ ");";
+		
+		// Query to create Equipos table
+		String equipos = "create table Equipos ("
+				+ "NumSerie char(4),"
+				+ "nombre nvarchar(100) not null,"
+				+ "primary key(NumSerie),"
+				+ "foreign key(facultad) references Facultad(codigo)"
+				+ "on delete cascade on update cascade,"
+				+ ");";
 		
 		int numAttributes = 3;
 		
-		// We define insert query variables for Peliculas table
-		String insertPeliculasUno = "insert into Peliculas values ('Hitman', 18)";
-		String insertPeliculasDos = "insert into Peliculas values ('Dragon ball', 16)";
-		String insertPeliculasTres = "insert into Peliculas values ('Spongebob', 7)";
-		String insertPeliculasCuatro = "insert into Peliculas values ('Thor', 12)";
-		String insertPeliculasCinco = "insert into Peliculas values ('Spiderman', 12)";
+		// We define insert query variables for Reserva table
+		String insertFacultadUno = "insert into Facultad values ('Hitman')";
+		String insertFacultadDos = "insert into Facultad values ('Dragon ball')";
+		String insertFacultadTres = "insert into Facultad values ('Spongebob')";
+		String insertFacultadCuatro = "insert into Facultad values ('Thor')";
+		String insertFacultadCinco = "insert into Facultad values ('Spiderman')";
 		
-		// We define insert query variables for Salas table
-		String insertSalasUno = "insert into Salas values (1, 'Hitman')";
-		String insertSalasDos = "insert into Salas values (2, 'Dragon ball')";
-		String insertSalasTres = "insert into Salas values (3, 'Spongebob')";
-		String insertSalasCuatro = "insert into Salas values (4, 'Thor')";
-		String insertSalasCinco = "insert into Salas values (5, 'Spiderman')";
+		// We define insert query variables for Investigadores table
+		String insertInvestigadoresUno = "insert into Investigadores values ('Hitman', 1)";
+		String insertInvestigadoresDos = "insert into Investigadores values ('Dragon ball', 2)";
+		String insertInvestigadoresTres = "insert into Investigadores values ('Spongebob', 3)";
+		String insertInvestigadoresCuatro = "insert into Investigadores values ('Thor', 4)";
+		String insertInvestigadoresCinco = "insert into Investigadores values ('Spiderman', 5)";
 
+		// We define insert query variables for Reserva table
+		String insertReservaUno = "insert into Reserva values ('Hitman', 18)";
+		String insertReservaDos = "insert into Reserva values ('Dragon ball', 16)";
+		String insertReservaTres = "insert into Reserva values ('Spongebob', 7)";
+		String insertReservaCuatro = "insert into Reserva values ('Thor', 12)";
+		String insertReservaCinco = "insert into Reserva values ('Spiderman', 12)";
+				
+		// We define insert query variables for Equipos table
+		String insertEquiposUno = "insert into Equipos values ('Hitman', 18)";
+		String insertEquiposDos = "insert into Equipos values ('Dragon ball', 16)";
+		String insertEquiposTres = "insert into Equipos values ('Spongebob', 7)";
+		String insertEquiposCuatro = "insert into Equipos values ('Thor', 12)";
+		String insertEquiposCinco = "insert into Equipos values ('Spiderman', 12)";
+				
+		
 		BaseDeDatos base_de_datos = new BaseDeDatos(); // New object with the method defined
 		base_de_datos.connectMySql(); // Connect to MySql
 		base_de_datos.deleteDataBase(nameDataBase); // First we delete the actual database
 		base_de_datos.createDataBase(nameDataBase); // We create the database
-		base_de_datos.createTable(nameDataBase, peliculas); // We create the table Peliculas
-		base_de_datos.createTable(nameDataBase, salas); // We create the table Salas
+		base_de_datos.createTable(nameDataBase, facultad); // We create the table Reserva
+		base_de_datos.createTable(nameDataBase, investigadores); // We create the table Investigadores
+		base_de_datos.createTable(nameDataBase, reserva); // We create the table Reserva
+		base_de_datos.createTable(nameDataBase, equipos); // We create the table Equipos
 		
-		// We insert 5 registers into Peliculas
-		base_de_datos.insertData(nameDataBase, insertPeliculasUno);
-		base_de_datos.insertData(nameDataBase, insertPeliculasDos);
-		base_de_datos.insertData(nameDataBase, insertPeliculasTres);
-		base_de_datos.insertData(nameDataBase, insertPeliculasCuatro);
-		base_de_datos.insertData(nameDataBase, insertPeliculasCinco);
+		// We insert 5 registers into Facultad
+		base_de_datos.insertData(nameDataBase, insertFacultadUno);
+		base_de_datos.insertData(nameDataBase, insertFacultadDos);
+		base_de_datos.insertData(nameDataBase, insertFacultadTres);
+		base_de_datos.insertData(nameDataBase, insertFacultadCuatro);
+		base_de_datos.insertData(nameDataBase, insertFacultadCinco);
 		
 		// We insert 5 registers into Salas
-		base_de_datos.insertData(nameDataBase, insertSalasUno);
-		base_de_datos.insertData(nameDataBase, insertSalasDos);
-		base_de_datos.insertData(nameDataBase, insertSalasTres);
-		base_de_datos.insertData(nameDataBase, insertSalasCuatro);
-		base_de_datos.insertData(nameDataBase, insertSalasCinco);
+		base_de_datos.insertData(nameDataBase, insertInvestigadoresUno);
+		base_de_datos.insertData(nameDataBase, insertInvestigadoresDos);
+		base_de_datos.insertData(nameDataBase, insertInvestigadoresTres);
+		base_de_datos.insertData(nameDataBase, insertInvestigadoresCuatro);
+		base_de_datos.insertData(nameDataBase, insertInvestigadoresCinco);
+		
+		// We insert 5 registers into Facultad
+		base_de_datos.insertData(nameDataBase, insertReservaUno);
+		base_de_datos.insertData(nameDataBase, insertReservaDos);
+		base_de_datos.insertData(nameDataBase, insertReservaTres);
+		base_de_datos.insertData(nameDataBase, insertReservaCuatro);
+		base_de_datos.insertData(nameDataBase, insertReservaCinco);
+		
+		// We insert 5 registers into Facultad
+		base_de_datos.insertData(nameDataBase, insertEquiposUno);
+		base_de_datos.insertData(nameDataBase, insertEquiposDos);
+		base_de_datos.insertData(nameDataBase, insertEquiposTres);
+		base_de_datos.insertData(nameDataBase, insertEquiposCuatro);
+		base_de_datos.insertData(nameDataBase, insertEquiposCinco);
 		
 		// We print table registers
-		base_de_datos.getValues(nameDataBase, "Peliculas", numAttributes);
-		base_de_datos.getValues(nameDataBase, "Salas", numAttributes);
+		base_de_datos.getValues(nameDataBase, "Facultad", numAttributes);
+		base_de_datos.getValues(nameDataBase, "Investigadores", numAttributes);
+		base_de_datos.getValues(nameDataBase, "Reserva", numAttributes);
+		base_de_datos.getValues(nameDataBase, "Equipos", numAttributes);
 	}
 	
 }
